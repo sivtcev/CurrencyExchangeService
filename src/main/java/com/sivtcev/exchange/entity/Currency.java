@@ -26,4 +26,10 @@ public class Currency {
     private LocalDateTime updateTime;
 
     private BigDecimal amountInUSD;
+
+    public Currency(String name, BigDecimal amountInUSD) {
+        this.name = name;
+        this.updateTime = LocalDateTime.now();
+        this.amountInUSD = amountInUSD;
+    }
 }

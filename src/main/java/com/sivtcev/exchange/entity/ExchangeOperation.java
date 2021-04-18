@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -29,5 +30,13 @@ public class ExchangeOperation {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Currency currencyTo;
 
-    private long amountInUSD;
+    private BigDecimal amountInUSD;
+
+    public ExchangeOperation(User user, Currency from, Currency to, BigDecimal amountInUSD){
+        this.operationTime = LocalDateTime.now();
+        this.user = user;
+        this.currencyFrom = from;
+        this.currencyTo = to;
+        this.amountInUSD = amountInUSD;
+    }
 }
