@@ -12,7 +12,7 @@ import java.util.Collection;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "operation")
 public class ExchangeOperation {
 
     @Id
@@ -38,5 +38,9 @@ public class ExchangeOperation {
         this.currencyFrom = from;
         this.currencyTo = to;
         this.amountInUSD = amountInUSD;
+    }
+
+    public long getAmountInUSDLong() {
+        return amountInUSD.longValue();
     }
 }

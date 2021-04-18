@@ -6,9 +6,12 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ExchangeResponse {
+public class CurrencyResponse {
 
-    @JsonProperty(value = "request_id")
-    private long id;
-    private long amount;
+    private String from;
+    private String to;
+    @JsonProperty(value = "total_sum")
+    private long totalSum;
+
+
 }

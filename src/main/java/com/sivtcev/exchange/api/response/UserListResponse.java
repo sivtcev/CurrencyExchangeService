@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
-public class ExchangeResponse {
+public class UserListResponse {
 
-    @JsonProperty(value = "request_id")
-    private long id;
-    private long amount;
+    private List<UserResponse> users;
 }

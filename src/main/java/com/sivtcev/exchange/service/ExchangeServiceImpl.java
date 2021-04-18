@@ -45,7 +45,7 @@ public class ExchangeServiceImpl implements ExchangeService {
         ExchangeOperation exchangeOperation = new ExchangeOperation(user, currencyFrom, currencyTo, exchangeList.get(0));
         exchangeOperationRepository.save(exchangeOperation);
 
-        return new ExchangeResponse(exchangeOperation.getId(), exchangeList.get(1));
+        return new ExchangeResponse(exchangeOperation.getId(), exchangeList.get(1).longValue());
     }
 
     private List<BigDecimal> exchangedAmount(BigDecimal courseAmountFrom, BigDecimal courseAmountTo, BigDecimal operationAmount) {
