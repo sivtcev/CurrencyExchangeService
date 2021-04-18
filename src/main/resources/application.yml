@@ -1,3 +1,8 @@
+logging:
+  level:
+    org.springframework: ERROR
+    com.sivtcev: DEBUG
+
 spring:
   datasource:
     url: jdbc:${DB_URL:mysql://localhost:3306/exchange?serverTimezone=UTC}

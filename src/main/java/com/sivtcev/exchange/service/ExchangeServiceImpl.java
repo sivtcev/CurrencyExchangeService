@@ -9,6 +9,7 @@ import com.sivtcev.exchange.repository.CurrencyRepository;
 import com.sivtcev.exchange.repository.ExchangeOperationRepository;
 import com.sivtcev.exchange.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 @Service
 @AllArgsConstructor
 public class ExchangeServiceImpl implements ExchangeService {
@@ -28,6 +30,7 @@ public class ExchangeServiceImpl implements ExchangeService {
 
     @Override
     public ExchangeResponse currencyExchange(ExchangeRequest exchangeRequest) {
+        log.debug("Start to currency exchange");
         User user = userRepository.getOne(exchangeRequest.getId());
         String from = exchangeRequest.getCurrencyFrom();
         String to = exchangeRequest.getCurrencyTo();
@@ -49,6 +52,7 @@ public class ExchangeServiceImpl implements ExchangeService {
     }
 
     private List<BigDecimal> exchangedAmount(BigDecimal courseAmountFrom, BigDecimal courseAmountTo, BigDecimal operationAmount) {
+        log.debug("Start to exchange amount calculate");
         List<BigDecimal> exchangeList = new ArrayList<>(2);
         exchangeList.add(operationAmount.multiply(courseAmountFrom));
         exchangeList.add(exchangeList.get(0).divide(courseAmountTo, RoundingMode.HALF_DOWN));

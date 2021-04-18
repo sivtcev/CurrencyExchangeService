@@ -7,12 +7,14 @@ import com.sivtcev.exchange.entity.ExchangeOperation;
 import com.sivtcev.exchange.repository.ExchangeOperationRepository;
 import com.sivtcev.exchange.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 @AllArgsConstructor
 public class StatisticServiceImpl implements StatisticService {
@@ -23,6 +25,7 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public UserListResponse getUsersWithOnceBigOperation() {
+        log.debug("Start to get user list with once big operation");
         List<UserResponse> users = operationRepository.findAll()
                 .stream()
                 .filter(operation -> operation.getAmountInUSD().longValue() > MIN_ONCE_BIG_OPERATION)
@@ -34,6 +37,7 @@ public class StatisticServiceImpl implements StatisticService {
 
     @Override
     public UserListResponse getUsersWithTotalBigOperation() {
+        log.debug("Start to get user list with total big operation");
         List<UserResponse> users = userRepository.findAll()
                 .stream()
                 .filter(user -> user.getOperations().stream()
