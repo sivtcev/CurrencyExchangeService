@@ -29,6 +29,7 @@ Response: request id, amount in the target currency.
   "amount: LONG
 }
 ```
+---
 
 ```GET /stats/once```
 
@@ -42,6 +43,7 @@ Response: Users who requested a conversion of more than $ 10,000 per request.
 }...
 ]
 ```
+---
 
 ```GET /stats/total```
 
@@ -55,6 +57,7 @@ Response: Users whose total requested volume is more than $ 100,000.
 }...
 ]
 ```
+---
 
 ```GET /stats/rating```
 
